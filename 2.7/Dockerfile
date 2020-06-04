@@ -65,6 +65,7 @@ RUN yum ${YUM_FLAGS} install wget \
 COPY conf/ /tmp/conf
 COPY source/ /tmp
 COPY ./scripts/docker-entrypoint.sh /usr/bin/docker-entrypoint.sh
+RUN chmod +x /usr/bin/docker-entrypoint.sh
 
 EXPOSE 80 443
 
