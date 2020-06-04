@@ -1,8 +1,7 @@
 #!/bin/bash
 
 # Move to temp and download OCS 
-cd /tmp 
-wget https://github.com/OCSInventory-NG/OCSInventory-ocsreports/releases/download/2.7/OCSNG_UNIX_SERVER_2.7.tar.gz
+cd /tmp
 tar xzf OCSNG_UNIX_SERVER_2.7.tar.gz
 cd OCSNG_UNIX_SERVER_2.7
 
