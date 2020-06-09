@@ -78,7 +78,7 @@ rm $OCS_WEBCONSOLE_DIR/install.php
 # Remove temp files
 cd /tmp
 shopt -s extglob
-rm -rf -v !("conf")
+#rm -rf -v !("conf")
 
 # Apache start
 if [ ! -d "$APACHE_RUN_DIR" ]; then
@@ -87,6 +87,10 @@ if [ ! -d "$APACHE_RUN_DIR" ]; then
 fi
 if [ -f "$APACHE_PID_FILE" ]; then
 	rm "$APACHE_PID_FILE"
+fi
+if [[ $ldap = "true"  ]]; then
+        sed -i 'S/$list_methode = array(0 => "local.php");/$list_methode = array(0=>"ldap.php",1=>"local.php");/g' /usr/share/ocsinventory-reports/ocsreports/backend/AUTH/auth.php
+        sed -i 'S/$list_methode = array(0 => "local.php");/$list_methode = array(0=>"ldap.php",1=>"local.php");/g' /usr/share/ocsinventory-reports/ocsreports/backend/identity/identity.php
 fi
 
 /usr/sbin/httpd -DFOREGROUND
