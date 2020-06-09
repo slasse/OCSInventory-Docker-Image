@@ -89,8 +89,8 @@ if [ -f "$APACHE_PID_FILE" ]; then
 	rm "$APACHE_PID_FILE"
 fi
 if [[ $ldap = "true"  ]]; then
-        sed -i 'S/$list_methode = array(0 => "local.php");/$list_methode = array(0=>"ldap.php",1=>"local.php");/g' /usr/share/ocsinventory-reports/ocsreports/backend/AUTH/auth.php
-        sed -i 'S/$list_methode = array(0 => "local.php");/$list_methode = array(0=>"ldap.php",1=>"local.php");/g' /usr/share/ocsinventory-reports/ocsreports/backend/identity/identity.php
+        sed -i 's/$list_methode = array(0 => "local.php");/$list_methode = array(0=>"ldap.php",1=>"local.php");/g' /usr/share/ocsinventory-reports/ocsreports/backend/AUTH/auth.php
+        sed -i 's/$list_methode = array(0 => "local.php");/$list_methode = array(0=>"ldap.php",1=>"local.php");/g' /usr/share/ocsinventory-reports/ocsreports/backend/identity/identity.php
 fi
 
 /usr/sbin/httpd -DFOREGROUND
